@@ -1,6 +1,7 @@
-// Central API URL config
-// Uses VITE_API_URL env variable if set (e.g. in Vercel dashboard),
-// otherwise falls back to the live Render backend URL.
-const API_URL = import.meta.env.VITE_API_URL || "https://ai-infrastructure-platform.onrender.com";
+// In production (Vercel), requests go to /api/* which Vercel proxies to Render backend.
+// This eliminates CORS entirely — the browser only talks to Vercel (same origin).
+// In local development, it falls back to localhost:8081.
+const API_URL = import.meta.env.VITE_API_URL ||
+  (import.meta.env.PROD ? "/api" : "http://localhost:8081");
 
 export default API_URL;
