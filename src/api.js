@@ -1,6 +1,6 @@
-// Central API URL config — reads from Vite env variable.
-// In production (Vercel), set VITE_API_URL in Vercel's Environment Variables dashboard.
-// In development, create a .env file with: VITE_API_URL=http://localhost:8081
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8081";
+// Central API URL config
+// Uses VITE_API_URL env variable if set (e.g. in Vercel dashboard),
+// otherwise falls back to the live Render backend URL.
+const API_URL = import.meta.env.VITE_API_URL || "https://ai-infrastructure-platform.onrender.com";
 
 export default API_URL;
