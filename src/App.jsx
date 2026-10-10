@@ -1,0 +1,55 @@
+import "./App.css"
+
+import Register from "./components/Register"
+import Login from "./components/Login"
+import Dashboard from "./components/Dashboard"
+import Infrastructure from "./components/Infrastructure"
+import TechnologyTimeline from "./components/TechnologyTimeline"
+import Learning from "./components/Learning"
+
+import { BrowserRouter, Routes, Route } from "react-router-dom"
+
+function App() {
+
+    return (
+        <BrowserRouter>
+
+            <Routes>
+
+                <Route
+                    path="/"
+                    element={<Register />}
+                />
+
+                <Route
+                    path="/login"
+                    element={<Login />}
+                />
+
+                <Route
+                    path="/dashboard"
+                    element={<Dashboard />}
+                />
+
+                <Route
+                    path="/infrastructure"
+                    element={<Infrastructure />}
+                />
+
+                <Route
+                    path="/timeline"
+                    element={<TechnologyTimeline />}
+                />
+
+                <Route
+                    path="/learning"
+                    element={<Learning />}
+                />
+
+            </Routes>
+
+        </BrowserRouter>
+    )
+}
+
+export default App
