@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { Line } from "react-chartjs-2"
+import API_URL from "../api"
 
 import {
     Chart as ChartJS,
@@ -60,7 +61,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                "http://localhost:8081/monitoring"
+                `${API_URL}/monitoring`
             )
 
             const data = await response.json()
@@ -110,7 +111,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                "http://localhost:8081/alerts"
+                `${API_URL}/alerts`
             )
 
             const data = await response.json()
@@ -129,7 +130,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                "http://localhost:8081/alert-statistics"
+                `${API_URL}/alert-statistics`
             )
 
             const data = await response.json()
@@ -148,7 +149,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                `http://localhost:8081/alerts/${id}`,
+                `${API_URL}/alerts/${id}`,
                 {
                     method: "DELETE"
                 }
@@ -173,7 +174,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                "http://localhost:8081/alerts/clear",
+                `${API_URL}/alerts/clear`,
                 {
                     method: "DELETE"
                 }
@@ -214,7 +215,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                `http://localhost:8081/ai/analyze?cpu=${cpuValue}&ram=${ramValue}&disk=${diskValue}&gpu=${gpuValue}`
+                `${API_URL}/ai/analyze?cpu=${cpuValue}&ram=${ramValue}&disk=${diskValue}&gpu=${gpuValue}`
             )
 
             const data = await response.json()
@@ -297,7 +298,7 @@ function Infrastructure() {
         try {
 
             const response = await fetch(
-                `http://localhost:8081/simulation?type=${type}`
+                `${API_URL}/simulation?type=${type}`
             )
 
             const data = await response.json()

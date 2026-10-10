@@ -14,6 +14,7 @@ import {
 import { Line, Bar } from "react-chartjs-2"
 import "./Dashboard.css"
 import "./AlertHistory.css"
+import API_URL from "../api"
 
 ChartJS.register(
     CategoryScale,
@@ -234,7 +235,7 @@ function Dashboard() {
             setError("")
 
             const monitoringResponse = await fetch(
-                "http://localhost:8081/monitoring"
+                `${API_URL}/monitoring`
             )
 
             if (!monitoringResponse.ok) {
@@ -264,7 +265,7 @@ function Dashboard() {
             })
 
             const aiResponse = await fetch(
-                `http://localhost:8081/ai/analyze?cpu=${monitoringData.cpu}&ram=${monitoringData.ram}&disk=${monitoringData.disk}&gpu=${monitoringData.gpu}`
+                `${API_URL}/ai/analyze?cpu=${monitoringData.cpu}&ram=${monitoringData.ram}&disk=${monitoringData.disk}&gpu=${monitoringData.gpu}`
             )
 
             if (aiResponse.ok) {
@@ -283,7 +284,7 @@ function Dashboard() {
             }
 
             const alertsResponse = await fetch(
-                "http://localhost:8081/alerts"
+                `${API_URL}/alerts`
             )
 
             if (alertsResponse.ok) {
@@ -320,7 +321,7 @@ function Dashboard() {
             }
 
             const statisticsResponse = await fetch(
-                "http://localhost:8081/alert-statistics"
+                `${API_URL}/alert-statistics`
             )
 
             if (statisticsResponse.ok) {
@@ -365,7 +366,7 @@ function Dashboard() {
         try {
 
             const response = await fetch(
-                `http://localhost:8081/alerts/${id}`,
+                `${API_URL}/alerts/${id}`,
                 {
                     method: "DELETE"
                 }
@@ -391,7 +392,7 @@ function Dashboard() {
         try {
 
             const response = await fetch(
-                "http://localhost:8081/alerts/clear",
+                `${API_URL}/alerts/clear`,
                 {
                     method: "DELETE"
                 }

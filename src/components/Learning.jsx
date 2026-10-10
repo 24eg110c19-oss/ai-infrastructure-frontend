@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import "./Learning.css"
+import API_URL from "../api"
 
 const TOTAL_MODULES = 6
 const USER_ID = Number(localStorage.getItem("userId"))
@@ -36,7 +37,7 @@ function Learning() {
     const [completedModules, setCompletedModules] = useState([])
 
     useEffect(() => {
-        fetch("http://localhost:8081/learning")
+        fetch(`${API_URL}/learning`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Failed to load learning modules")
@@ -59,7 +60,7 @@ function Learning() {
             return
         }
 
-        fetch(`http://localhost:8081/learning-progress/${USER_ID}`)
+        fetch(`${API_URL}/learning-progress/${USER_ID}`)
             .then(response => {
                 if (!response.ok) {
                     throw new Error("Failed to load learning progress")
@@ -96,7 +97,7 @@ function Learning() {
         if (isCompleted) {
 
             fetch(
-                `http://localhost:8081/learning-progress/${USER_ID}/${moduleId}`,
+                `${API_URL}/learning-progress/${USER_ID}/${moduleId}`,
                 {
                     method: "DELETE"
                 }
@@ -122,7 +123,7 @@ function Learning() {
 
         } else {
 
-            fetch("http://localhost:8081/learning-progress", {
+            fetch(`${API_URL}/learning-progress`, {
 
                 method: "POST",
 

@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./Register.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import API_URL from "../api";
 
 function Login() {
 
@@ -24,7 +25,7 @@ function Login() {
         try {
 
             const response = await axios.post(
-                "http://localhost:8081/users/login",
+                `${API_URL}/users/login`,
                 loginUser
             );
 

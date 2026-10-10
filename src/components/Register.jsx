@@ -3,8 +3,7 @@ import { useState } from "react";
 import "./Register.css";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
-
-const API_URL = "https://ai-infrastructure-platform.onrender.com";
+import API_URL from "../api";
 
 function Register() {
     const navigate = useNavigate();
